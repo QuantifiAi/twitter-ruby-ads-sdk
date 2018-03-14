@@ -118,6 +118,7 @@ module TwitterAds
     end
 
     def handle_error(response)
+      Rails.logger.error(response.body)
       raise TwitterAds::Error.from_response(response) unless response.code < 400
       response
     end
